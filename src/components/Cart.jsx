@@ -46,7 +46,7 @@ function Cart() {
                 >
                   {item.name}
                 </th>
-                <td className="px-6 py-4"></td>
+                <td className="px-6 py-4">{item.quantity}</td>
                 <td className="px-6 py-4">&#8377;{item.price}</td>
                 <td className="px-6 py-4">
                   <button onClick={() => cart.removeItem(index)}>
