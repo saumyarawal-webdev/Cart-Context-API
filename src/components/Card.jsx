@@ -68,6 +68,7 @@ const handleAddToCart = () => {
 Card.propTypes = {
   name: PropTypes.string, // 'name' must be a string and is required
   price: PropTypes.number, // 'price' must be a number and is required
+  sprice: PropTypes.number
 };
 
 export default Card;

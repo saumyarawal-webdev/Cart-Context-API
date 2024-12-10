@@ -9,6 +9,7 @@ function Cart() {
   const navigate = useNavigate();
 
   const goOut = () => {
+    
     navigate("/thankyou"); // Navigate to the shop page
   };
 
