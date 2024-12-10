@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 function Card(props) {
   const cart = useContext(CartContext);
 
-  const handleAddToCart = () => {
+const handleAddToCart = () => {
     // Check if the item already exists in the cart
     const existingItemIndex = cart.items.findIndex(item => item.name === props.name);
 
@@ -16,7 +16,7 @@ function Card(props) {
           return {
             ...item,
             quantity: item.quantity + 1, // Increment the quantity
-            price: (item.quantity +1)*item.price,
+            price: (item.quantity +1)*item.sprice,
           };
         }
         return item;
@@ -24,7 +24,7 @@ function Card(props) {
       cart.setItems(updatedItems); // Update the state with the new items array
     } else {
       // Item doesn't exist, add it with quantity 1
-      const newItem = { name: props.name, price: props.price, quantity: 1 };
+      const newItem = { name: props.name, price: props.price, quantity: 1 , sprice:props.price};
       cart.setItems([...cart.items, newItem]); // Add new item to the cart
     }
   };

@@ -20,6 +20,7 @@ function Shop() {
           <Card name="Camera" price="20000" />
           <Card name="Pen Drive" price="1000" />
           <Card name="Hard Disk" price="3000" />
+          
         </div>
       </div>
 

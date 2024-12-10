@@ -11,6 +11,28 @@ function Cart() {
   const goOut = () => {
     navigate("/thankyou"); // Navigate to the shop page
   };
+
+  const handleQuantityChange = (e, item) => {
+    const updatedQuantity = parseInt(e.target.value, 10);
+  
+    if (updatedQuantity >= 1) {
+      // Update the quantity and price based on the new value
+      const updatedItems = cart.items.map((cartItem) => {
+        if (cartItem.name === item.name) {
+          return {
+            ...cartItem,
+            quantity: updatedQuantity,
+            price: item.sprice * updatedQuantity,
+          };
+        }
+        return cartItem;
+      });
+  
+      // Update the cart context with the new items
+      cart.setItems(updatedItems);
+    }
+  };
+  
   return (
     <div className="relative overflow-x-auto">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -46,8 +68,17 @@ function Cart() {
                 >
                   {item.name}
                 </th>
-                <td className="px-6 py-4">{item.quantity}</td>
-                <td className="px-6 py-4">&#8377;{item.price}</td>
+                <td className="px-6 py-4"><input 
+  type="number" 
+  name="" 
+  id="" 
+  value={item.quantity} 
+  className="w-20 px-3 py-2 border border-gray-300 rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:focus:ring-blue-400"
+  min="1" 
+  onChange={(e) => handleQuantityChange(e,item)} 
+/>
+</td>
+                <td className="px-6 py-4">&#8377;{item.sprice*item.quantity}</td>
                 <td className="px-6 py-4">
                   <button onClick={() => cart.removeItem(index)}>
                     <svg
